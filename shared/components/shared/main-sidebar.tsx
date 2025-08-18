@@ -5,12 +5,27 @@ import {
 	SidebarFooter,
 	SidebarGroup,
 	SidebarGroupContent,
+	SidebarGroupLabel,
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "../ui/sidebar"
-import { Settings, Folder, Search, LogOut, X, User } from "lucide-react"
+import {
+	Settings,
+	Folder,
+	Search,
+	LogOut,
+	X,
+	User,
+	ShoppingBag,
+	Users,
+	Map,
+	BriefcaseBusiness,
+	BadgeDollarSign,
+	CreditCard,
+	CardSim,
+} from "lucide-react"
 import Image from "next/image"
 import { Input } from "../ui/input"
 import React, { ChangeEvent } from "react"
@@ -26,17 +41,23 @@ export function AppSidebar() {
 	}
 	const items = [
 		{
-			title: "Профиль",
-			url: "#",
-			icon: User,
-		},
-		{
 			title: "Административный раздел",
 			icon: Settings,
 			children: [
 				{
-					title: "Тест",
+					title: "Компании",
 					url: "#",
+					icon: ShoppingBag,
+				},
+				{
+					title: "Пользователи",
+					url: "#",
+					icon: User,
+				},
+				{
+					title: "Группы пользователей",
+					url: "#",
+					icon: Users,
 				},
 			],
 		},
@@ -44,10 +65,37 @@ export function AppSidebar() {
 			title: "Справочники",
 			url: "#",
 			icon: Folder,
+			children: [
+				{
+					title: "Регион",
+					url: "#",
+					icon: Map,
+				},
+				{
+					title: "ОКВЭД",
+					url: "#",
+					icon: BriefcaseBusiness,
+				},
+				{
+					title: "НДС",
+					url: "#",
+					icon: BadgeDollarSign,
+				},
+				{
+					title: "Назначение платежа",
+					url: "#",
+					icon: CreditCard,
+				},
+				{
+					title: "Группа товаров/услуга",
+					url: "#",
+					icon: CardSim,
+				},
+			],
 		},
 	]
 	return (
-		<Sidebar collapsible='offcanvas'>
+		<Sidebar collapsible='icon'>
 			<SidebarHeader className='flex items-center w-full flex-row border-b-2 rounded-none'>
 				<Image src={"./logo.svg"} alt='Logo' height={50} width={50} />{" "}
 				<span className='text-2xl pl-4'>CashBazar</span>
@@ -75,15 +123,23 @@ export function AppSidebar() {
 									</div>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
-							{items.map((item) => (
-								<SidebarMenuItem key={item.title}>
-									<SidebarMenuButton asChild>
-										<a href={item.url}>
-											<item.icon />
-											<span>{item.title}</span>
-										</a>
-									</SidebarMenuButton>
-								</SidebarMenuItem>
+							{items.map((item, id) => (
+								<>
+									<SidebarGroupLabel key={id}>
+										<item.icon />
+										<span className='text-[14px] pl-1.5'>{item.title}</span>
+									</SidebarGroupLabel>
+									{item.children?.map((c, idx) => (
+										<SidebarMenuItem key={c.title + idx} className='ml-2.5'>
+											<SidebarMenuButton asChild>
+												<a href={c.url}>
+													<c.icon />
+													<span>{c.title}</span>
+												</a>
+											</SidebarMenuButton>
+										</SidebarMenuItem>
+									))}
+								</>
 							))}
 						</SidebarMenu>
 					</SidebarGroupContent>
@@ -91,7 +147,7 @@ export function AppSidebar() {
 			</SidebarContent>
 			<SidebarFooter>
 				<Button>
-					<LogOut /> Выход
+					<LogOut /> <span>Выход</span>
 				</Button>
 			</SidebarFooter>
 		</Sidebar>
