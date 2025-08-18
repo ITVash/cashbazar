@@ -104,7 +104,17 @@ export function AppSidebar() {
 				<SidebarGroup>
 					<SidebarGroupContent className=''>
 						<SidebarMenu>
-							<SidebarMenuItem key={"Search input"}>
+							{
+								<SidebarMenuItem key={"User Edit"}>
+									<SidebarMenuButton asChild>
+										<a href={"#"}>
+											<User />
+											<span>Профиль</span>
+										</a>
+									</SidebarMenuButton>
+								</SidebarMenuItem>
+							}
+							{/* <SidebarMenuItem key={"Search input"}>
 								<SidebarMenuButton asChild>
 									<div className='relative'>
 										<Search className='absolute left-3' />{" "}
@@ -122,7 +132,7 @@ export function AppSidebar() {
 										)}
 									</div>
 								</SidebarMenuButton>
-							</SidebarMenuItem>
+							</SidebarMenuItem> */}
 							{items.map((item, id) => (
 								<>
 									<SidebarGroupLabel key={id}>
@@ -146,9 +156,15 @@ export function AppSidebar() {
 				</SidebarGroup>
 			</SidebarContent>
 			<SidebarFooter>
-				<Button>
-					<LogOut /> <span>Выход</span>
-				</Button>
+				<SidebarMenu>
+					<SidebarMenuItem>
+						<SidebarMenuButton asChild>
+							<Button>
+								<LogOut /> <span>Выход</span>
+							</Button>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+				</SidebarMenu>
 			</SidebarFooter>
 		</Sidebar>
 	)
