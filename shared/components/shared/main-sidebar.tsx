@@ -14,9 +14,7 @@ import {
 import {
 	Settings,
 	Folder,
-	Search,
 	LogOut,
-	X,
 	User,
 	ShoppingBag,
 	Users,
@@ -27,18 +25,9 @@ import {
 	CardSim,
 } from "lucide-react"
 import Image from "next/image"
-import { Input } from "../ui/input"
-import React, { ChangeEvent } from "react"
 import { Button } from "../ui/button"
 
 export function AppSidebar() {
-	const [search, setSearch] = React.useState<string>("")
-	const SearchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setSearch(e.target.value)
-	}
-	const ClearSearchHandler = (): void => {
-		setSearch("")
-	}
 	const items = [
 		{
 			title: "Административный раздел",
@@ -122,25 +111,6 @@ export function AppSidebar() {
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							}
-							{/* <SidebarMenuItem key={"Search input"}>
-								<SidebarMenuButton asChild>
-									<div className='relative'>
-										<Search className='absolute left-3' />{" "}
-										<Input
-											placeholder='Поиск'
-											className='h-7 pl-6 pr-6'
-											value={search}
-											onChange={SearchHandler}
-										/>
-										{search.length > 0 && (
-											<X
-												className='absolute right-3 cursor-pointer'
-												onClick={ClearSearchHandler}
-											/>
-										)}
-									</div>
-								</SidebarMenuButton>
-							</SidebarMenuItem> */}
 							{items.map((item, id) => (
 								<>
 									<SidebarGroupLabel key={id}>
