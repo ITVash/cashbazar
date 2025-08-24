@@ -97,8 +97,16 @@ export function AppSidebar() {
 	return (
 		<Sidebar collapsible='icon'>
 			<SidebarHeader className='flex items-center w-full flex-row border-b-2 rounded-none'>
-				<Image src={"./logo.svg"} alt='Logo' height={50} width={50} />{" "}
-				<span className='text-2xl pl-4'>CashBazar</span>
+				<SidebarMenu>
+					<SidebarMenuItem>
+						<SidebarMenuButton asChild>
+							<a href='/'>
+								<Image src={"./logo.svg"} alt='Logo' height={40} width={40} />{" "}
+								<span className='text-2xl'>CashBazar</span>
+							</a>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+				</SidebarMenu>
 			</SidebarHeader>
 			<SidebarContent>
 				<SidebarGroup>
