@@ -1,7 +1,11 @@
 import { Header } from "@/shared/components/shared/header"
 import { AppSidebar } from "@/shared/components/shared/main-sidebar"
 import { SidebarProvider, SidebarTrigger } from "@/shared/components/ui/sidebar"
-
+import { Metadata } from "next"
+export const metadata: Metadata = {
+	title: "CashBazar - Главная",
+	description: "Главная страница приложения.",
+}
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<SidebarProvider>
@@ -11,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 					<SidebarTrigger />
 					<Header className='flex-1/2' />
 				</div>
-				<div className='h-full'>{children}</div>
+				<div className='h-full m-3'>{children}</div>
 			</main>
 		</SidebarProvider>
 	)

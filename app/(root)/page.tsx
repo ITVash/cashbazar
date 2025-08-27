@@ -1,10 +1,12 @@
-import { Button } from "@/shared/components/ui/button"
-import { Input } from "@/shared/components/ui/input"
 import { cn } from "@/shared/lib/utils"
 import Image from "next/image"
+import Logo from "@/public/logo.svg"
 
 export default function Home() {
-	return <main className={cn("mx-6 mt-2")}></main>
+	return (
+		<main className={cn("flex h-full w-full justify-center items-center")}>
+			<Image src={Logo} alt='Логотип предприятия' />
+		</main>
+	)
 }
-
 

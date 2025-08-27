@@ -26,6 +26,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import { Button } from "../ui/button"
+import Link from "next/link"
 
 export function AppSidebar() {
 	const items = [
@@ -89,10 +90,10 @@ export function AppSidebar() {
 				<SidebarMenu>
 					<SidebarMenuItem>
 						<SidebarMenuButton asChild>
-							<a href='/'>
+							<Link href='/'>
 								<Image src={"./logo.svg"} alt='Logo' height={40} width={40} />{" "}
 								<span className='text-2xl'>CashBazar</span>
-							</a>
+							</Link>
 						</SidebarMenuButton>
 					</SidebarMenuItem>
 				</SidebarMenu>
@@ -104,10 +105,10 @@ export function AppSidebar() {
 							{
 								<SidebarMenuItem key={"User Edit"}>
 									<SidebarMenuButton asChild>
-										<a href={"#"}>
+										<Link href={"/profile"}>
 											<User />
 											<span>Профиль</span>
-										</a>
+										</Link>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							}
