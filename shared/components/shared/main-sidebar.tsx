@@ -28,7 +28,7 @@ import Image from "next/image"
 import { Button } from "../ui/button"
 import Link from "next/link"
 
-export function AppSidebar() {
+export const AppSidebar = () => {
 	const items = [
 		{
 			title: "Административный раздел",
@@ -87,7 +87,7 @@ export function AppSidebar() {
 	return (
 		<Sidebar collapsible='icon'>
 			<SidebarHeader className='flex items-center w-full flex-row border-b-2 rounded-none'>
-				<SidebarMenu>
+				<SidebarMenu key={"Logo"}>
 					<SidebarMenuItem>
 						<SidebarMenuButton asChild>
 							<Link href='/'>
@@ -102,29 +102,27 @@ export function AppSidebar() {
 				<SidebarGroup>
 					<SidebarGroupContent className=''>
 						<SidebarMenu>
-							{
-								<SidebarMenuItem key={"User Edit"}>
-									<SidebarMenuButton asChild>
-										<Link href={"/profile"}>
-											<User />
-											<span>Профиль</span>
-										</Link>
-									</SidebarMenuButton>
-								</SidebarMenuItem>
-							}
+							<SidebarMenuItem key={"User Edit"}>
+								<SidebarMenuButton asChild>
+									<Link href={"/profile"}>
+										<User />
+										<span>Профиль</span>
+									</Link>
+								</SidebarMenuButton>
+							</SidebarMenuItem>
 							{items.map((item, id) => (
 								<>
-									<SidebarGroupLabel key={id}>
+									<SidebarGroupLabel key={item.title + id}>
 										<item.icon />
 										<span className='text-[14px] pl-1.5'>{item.title}</span>
 									</SidebarGroupLabel>
 									{item.children?.map((c, idx) => (
 										<SidebarMenuItem key={c.title + idx} className='ml-2.5'>
 											<SidebarMenuButton asChild>
-												<a href={c.url}>
+												<Link href={c.url}>
 													<c.icon />
 													<span>{c.title}</span>
-												</a>
+												</Link>
 											</SidebarMenuButton>
 										</SidebarMenuItem>
 									))}
